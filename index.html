@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="favicon.jpg" type="image/x-icon" />
+    <title>SUSUCity</title>
+    <style type="text/css"></style>
+    <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+    <!--Используем API 2GIS-->
+    <script type="text/javascript">
+      var map;
+      DG.then(function () {
+        //Создание карты
+        map = DG.map("map", {
+          center: [55.160119, 61.37031],
+          zoom: 15.5,
+          maxBounds: [
+            [55.169087, 61.33991],
+            [55.151951, 61.390617],
+          ],
+          dragging: true,
+          touchZoom: false,
+          scrollWheelZoom: false,
+          doubleClickZoom: false,
+          boxZoom: false,
+          geoclicker: true,
+          zoomControl: false,
+          fullscreenControl: false,
+        });
+        //Подключаем иконку Университета
+        //Она будет использоваться для обозначения учебных корпусов
+        var susu = DG.icon({
+          iconUrl: "susu.png",
+          iconRetinaUrl: "susu.png",
+          iconSize: [35, 35],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94],
+        });
+        //Подключаем иконку Фудкорта
+        //Она будет показывать, где можно посидеть и поесть
+        var food = DG.icon({
+          iconUrl: "питание.png",
+          iconRetinaUrl: "питание.png",
+          iconSize: [35, 35],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94],
+        });
+        //Подключаем иконку Общежития
+        //Она будет использоваться для обозначения Общежитий
+        var home = DG.icon({
+          iconUrl: "общага.png",
+          iconRetinaUrl: "общага.png",
+          iconSize: [35, 35],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94],
+        });
+        //Подключаем иконку библиотеки
+        //Она будет использоваться для обозначения Библиотеки
+        var lib = DG.icon({
+          iconUrl: "библиотека.png",
+          iconRetinaUrl: "библиотека.png",
+          iconSize: [35, 35],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94],
+        });
+        //Подключаем иконку Ёлки. Будем использовать её для обозначения Сквера студенческих отрядов
+        var tree = DG.icon({
+          iconUrl: "15864.png",
+          iconRetinaUrl: "15864.png",
+          iconSize: [40, 40],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94],
+        });
+        //Подключаем иконку памятника
+        //Она будет использоваться для обозначения памятников и табличек
+        var memorial = DG.icon({
+          iconUrl: "памятник.png",
+          iconRetinaUrl: "памятник.png",
+          iconSize: [40, 40],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94],
+        });
+        DG.marker([55.158426, 61.362974], { icon: memorial })
+
+          .addTo(map)
+          .bindPopup(
+            "Памятник знаменитому академику-ядерщику был открыт в 1986 году к 250-летию Челябинска на площади Науки около здания Южно-Уральского государственного университета. С 2014 года включен в единый реестр объектов культурного наследия Российской Федерации. <br> <br>Автором проекта является Вардкес Авакян, вместе с ним работали архитекторы Б. В. Петров, В. Л. Глазырин, И. В. Талалай, инженер В. Наумов. <br> <br> Памятник состоит из двух пилонов, между которыми находится статуя И. В. Курчатова на постаменте, а полусферы на пилонах символизируют расщепленный атом. Монумент символизирует превосходство человеческого разума над мощью атомной энергии."
+          );
+        DG.marker([55.157731, 61.370475], { icon: tree })
+          .addTo(map)
+          .bindPopup(
+            "Сквер студенческих отрядов <br> <br>Данный сквер является уникальным местом для города с точки зрения озеленения – это моно-парк. В свое время здесь были высажены деревья одной породы – ель колючая («голубая»).<br> <br>Реконструкция сквера проходила в два этапа в 2019-2020 годах.<br> <br>Было произведено устройство и ремонт 3 000 кв.м. тропиночной сети, смонтировано новое освещение, установлены скамейки, качели, велопарковки. Всего 34 единицы МАФ и 38 урн. Полностью произведено устройство 6 тысяч кв.м.газона.<br> <br>Существующий фонтан классической формы со стороны проспекта Ленина был переформатирован в «сухой», что сразу же усилило привлекательность сквера.  "
+          );
+
+        DG.marker([55.159595, 61.37034], { icon: susu })
+          .addTo(map)
+          .bindPopup(
+            "Главный корпус ЮУрГУ <br> <br> Главный корпус Южно-Уральского государственного университета — центральное здание университетского комплекса Южно-Уральского государственного университета (ЮУрГУ). Проект корпуса был создан Государственным институтом по проектированию высших учебных заведений в 1951 году. Архитектор — С. В. Истомин. Построен в «усечённом» виде в 1960 году. Достроен по первоначальному (с усовершенствованиями) проекту в 2001—2004 годах. Архитекторы (кафедра архитектуры ЮУрГУ) — М. Ю. Узунов, С. И. Савчук, С. Г. Шабиев, М. Г. Бояркина. С 2003 по 2007 год являлся самым высоким зданием Челябинска. Высота — 76 м"
+          );
+        DG.marker([55.159261, 61.371711], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 1б");
+        DG.marker([55.159262, 61.368999], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 1а");
+        DG.marker([55.158161, 61.368934], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 2<br> <br>");
+        DG.marker([55.157396, 61.366025], { icon: lib })
+          .addTo(map)
+          .bindPopup("Учебный корпус 3д<br> <br>Библиотека");
+        DG.marker([55.158021, 61.365883], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 3a<br> <br>");
+        DG.marker([55.157843, 61.365234], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 3бв<br> <br>");
+        DG.marker([55.157622, 61.366775], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 3г<br> <br>");
+        DG.marker([55.156945, 61.366435], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебно спортивный комплекс<br> <br>");
+        DG.marker([55.160032, 61.36706], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 5");
+        DG.marker([55.159887, 61.367629], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус Сигма");
+        DG.marker([55.157034, 61.367982], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебный корпус 6");
+        DG.marker([55.156809, 61.367967], { icon: susu })
+          .addTo(map)
+          .bindPopup("Учебно спортивный комплекс");
+        DG.marker([55.160595, 61.368397], { icon: susu })
+          .addTo(map)
+          .bindPopup("Лабораторный корпус АТ факультета");
+        DG.marker([55.160793, 61.368884], { icon: susu })
+          .addTo(map)
+          .bindPopup("Лабораторный корпус (теплотехнический)");
+        DG.marker([55.160868, 61.370503], { icon: susu })
+          .addTo(map)
+          .bindPopup("Лабораторный корпус АС факультета");
+        DG.marker([55.160912, 61.371835], { icon: susu })
+          .addTo(map)
+          .bindPopup("Лабораторный корпус 1");
+        DG.marker([55.160851, 61.366447], { icon: susu })
+          .addTo(map)
+          .bindPopup("Лабораторный корпус 4");
+        DG.marker([55.160674, 61.367544], { icon: home })
+          .addTo(map)
+          .bindPopup("Общежитие №1");
+        DG.marker([55.16019, 61.365601], { icon: home })
+          .addTo(map)
+          .bindPopup("Общежитие №6");
+        DG.marker([55.160414, 61.366474], { icon: home })
+          .addTo(map)
+          .bindPopup("Общежитие №5");
+        DG.marker([55.159159, 61.366631], { icon: home })
+          .addTo(map)
+          .bindPopup("Общежитие №7");
+        DG.marker([55.159176, 61.36762], { icon: home })
+          .addTo(map)
+          .bindPopup("Общежитие №2");
+        DG.marker([55.156322, 61.371845], { icon: home })
+          .addTo(map)
+          .bindPopup("Общежитие №3");
+        DG.marker([55.156154, 61.371101], { icon: home })
+          .addTo(map)
+          .bindPopup("Общежитие №8");
+        DG.marker([55.158323, 61.371503], { icon: food })
+          .addTo(map)
+          .bindPopup(
+            "В здании находится несколько заведений общественного питания <br> <br>Пиццерия «Pizza Mia»<br>Столовая «Перемена»<br>Столовая «Бюджет»<br>"
+          );
+        DG.marker([55.15488, 61.370294], { icon: food })
+          .addTo(map)
+          .bindPopup(
+            "Торговый центр «Белый рынок»<br> <br>В здании находится множество заведений общественного питания <br> <br>Шашлычная «Gordon»<br>Сырная лавка «Сыр да Вино»<br>Ресторан «Уголь»<br>Бар «Good company»<br>Ресторан «La galleria bar&kitchen»<br>Супермаркет «Перекресток»<br>Бургерная «Мясорубка»<br>Кафе азиатского стрит-фуда «4pho»<br>​Кафе корейской кухни «Mёndon»<br>​Поке-бар «Poe Poe»<br>Доставка готовых блюд «Брют ли»<br>Греческий ресторан «Gyros & grill»<br>​Ресторан китайской кухни «Bao»<br>Пиццерия «Pizza Makers»<br>Кафе «Love plove»<br>Быстрое питание «Бачо и хинкали»<br>​Быстрое питание «Румян Картофан»<br>Сэндвичная «Sando»<br>Кондитерская «La mousse»<br>Кофейня «Waфля»<br>Бар «On taps»<br>Кофейня «Boho coffee&store»<br>​Корнер «Miltee»<br>​Быстрое питание «Viva La Mexico»<br>Бар «Blanco bar»<br>"
+          );
+        DG.marker([55.156258, 61.369835], { icon: food })
+          .addTo(map)
+          .bindPopup(
+            "Бизнес центр «Полёт»<br> <br>В здании находится несколько заведений общественного питания <br> <br>​Магазин здоровой еды с доставкой «Жизньмарт»<br>Ресторан авторской кухни «Envy food&wine»<br>Ресторан «Hugs Kitchen+Bar»<br>​Стейк-хаус «Steakman»<br>Микрокофейня «Бессонница»<br>Кофейня «PandaTea»"
+          );
+      });
+    </script>
+  </head>
+  <body>
+    <style>
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .sidenav {
+        height: 100%;
+        width: 300px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        padding-top: 20px;
+      }
+
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+      }
+
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {
+          padding-top: 15px;
+        }
+        .sidenav a {
+          font-size: 18px;
+        }
+      }
+      #map {
+        /* border: 8px black solid; */
+        /* width: 100%; */
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
+    <div class="sidenav">
+      <a href="#">Учебные корпуса</a>
+      <a href="#">Общежития</a>
+      <a href="#">Достопримичательности</a>
+      <a href="#">Закусочные</a>
+    </div>
+
+    <div id="map"></div>
+  </body>
+</html>
