@@ -6,25 +6,28 @@ body {
 }
 .sidenav {
   height: 100%;
-  width: 300px;
+  width: 30%;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
+  max-width: 330px;
   background-color: #111;
   overflow-x: hidden;
   padding-top: 20px;
 }
 
-.sidenav a {
+.sidenav button {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
   display: block;
+  border: none;
+  background: transparent;
 }
 
-.sidenav a:hover {
+.sidenav button:hover {
   color: #f1f1f1;
 }
 
