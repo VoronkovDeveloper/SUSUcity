@@ -1,4 +1,4 @@
-let susu, food, home, lib, tree, memorial;
+let susu, food, home, lib, tree, sport, heal, memorial;
 DG.then(function() {
     susu = DG.icon({
         iconUrl: 'assets/images/icons/susu.png',
@@ -26,6 +26,18 @@ DG.then(function() {
     });
     tree = DG.icon({
         iconUrl: 'assets/images/icons/tree.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40]
+    });
+    sport = DG.icon({
+        iconUrl: 'assets/images/icons/sport.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40]
+    });
+    heal = DG.icon({
+        iconUrl: 'assets/images/icons/heal.png',
         iconSize: [40, 40],
         iconAnchor: [20, 40],
         popupAnchor: [0, -40]
